@@ -50,16 +50,16 @@ public class InsertionSortPanel extends SortPanel {
 		int columnWidth = (getWidth() - 4 * BORDER_WIDTH) / size;
 		int columnHeight = (getHeight() - 4 * BORDER_WIDTH) / size;
 		for (int i = (cyanColumn == -1 ? 0 : cyanColumn); i < list.length; i++) {
-			g.setColor(Color.WHITE);
+			g.setColor(Color.YELLOW);
 			g.fillRect(2 * BORDER_WIDTH + columnWidth * i, getHeight() - list[i] * columnHeight - 2 * BORDER_WIDTH, columnWidth, list[i] * columnHeight);
 			g.setColor(Color.BLACK);
-			g.drawRect(2 * BORDER_WIDTH + columnWidth * i, getHeight() - list[i] * columnHeight - 2 * BORDER_WIDTH, columnWidth, list[i] * columnHeight);			
+			g.drawRect(2 * BORDER_WIDTH + columnWidth * i, getHeight() - list[i] * columnHeight - 2 * BORDER_WIDTH, columnWidth, list[i] * columnHeight);
 		}
 		for (int i = 0; i <= cyanColumn; i++) {
 			g.setColor(Color.CYAN);
 			g.fillRect(2 * BORDER_WIDTH + columnWidth * i, getHeight() - list[i] * columnHeight - 2 * BORDER_WIDTH, columnWidth, list[i] * columnHeight);
 			g.setColor(Color.BLACK);
-			g.drawRect(2 * BORDER_WIDTH + columnWidth * i, getHeight() - list[i] * columnHeight - 2 * BORDER_WIDTH, columnWidth, list[i] * columnHeight);			
+			g.drawRect(2 * BORDER_WIDTH + columnWidth * i, getHeight() - list[i] * columnHeight - 2 * BORDER_WIDTH, columnWidth, list[i] * columnHeight);
 		}
 		if(redColumn != -1) {
 			g.setColor(Color.RED);

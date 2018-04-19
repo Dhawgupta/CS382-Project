@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 public class Main extends JApplet {
 
 	private static final long serialVersionUID = 1L;
-	private SortPanel[] sortPanels = new SortPanel[4];
+	private SortPanel[] sortPanels = new SortPanel[3];
 
 	private static int size = 30;
 	private int sleepTime = 100;
@@ -17,16 +17,16 @@ public class Main extends JApplet {
 	public Main() {
 		setLayout(new GridLayout(1, 1, 0, 0));
 		SortPanelsHolder sortPanelHolder = new SortPanelsHolder();
-		sortPanelHolder.setLayout(new  GridLayout(2, 2, 0, 0));
+		sortPanelHolder.setLayout(new  GridLayout(3, 1, 0, 0));
 		sortPanelHolder.setBackground(Color.CYAN);
 		sortPanelHolder.setForeground(Color.CYAN);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int width = screenSize.width / 2; 
-		int height = screenSize.height / 2; 
+		int width = screenSize.width / 1;
+		int height = screenSize.height / 3;
 		sortPanels[0] = new SelectionSortPanel(" Selection Sort ", sleepTime, width, height);
 		sortPanels[1] = new InsertionSortPanel(" Insertion Sort  ", sleepTime, width, height);
 		sortPanels[2] = new BubbleSortPanel(" Bubble Sort ", sleepTime, width, height);
-		sortPanels[3] = new MergeSortPanel(" Merge Sort ", sleepTime, width, height);
+//		sortPanels[3] = new MergeSortPanel(" Merge Sort ", sleepTime, width, height);
 
 		
 		for (int i = 0; i < sortPanels.length; i++) {
@@ -81,6 +81,11 @@ public class Main extends JApplet {
 		}
 	}
 
+	public void endAnimation(){
+		this.animationName = "Hakuna Matata";
+		repaint();
+	}
+
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Sorting Algorithm Animations");
 		Main main = new Main();
@@ -104,5 +109,6 @@ public class Main extends JApplet {
 			list[index] = temp;
 		}
 		main.beginAnimation("CS382 Project", list);
+		main.endAnimation();
 	}
 }

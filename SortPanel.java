@@ -27,7 +27,11 @@ public abstract class SortPanel extends JPanel implements Runnable {
 		reset();
 		this.size = list.length;
 		this.list = java.util.Arrays.copyOf(list, size);
-		setBackground(Color.BLACK);
+		setBackground(Color.ORANGE);
+//		setBackground(Color.WHITE);
+//		setBackground(Color.YELLOW);
+
+
 	}
 	
 	@Override
@@ -41,14 +45,14 @@ public abstract class SortPanel extends JPanel implements Runnable {
 		
 		//draw border
 		g.setColor(Color.WHITE);
-		g.drawRect(BORDER_WIDTH, BORDER_WIDTH, getWidth() - 2 * BORDER_WIDTH, getHeight() - 2 * BORDER_WIDTH);
+//		g.drawRect(BORDER_WIDTH, BORDER_WIDTH, getWidth() - 2 * BORDER_WIDTH, getHeight() - 2 * BORDER_WIDTH);
 		
 		//draw title
-		Font nameFont = new Font(Font.MONOSPACED, Font.BOLD, 18);
+		Font nameFont = new Font("serif", Font.BOLD, 25);
 		FontMetrics nameFontMetrix = getFontMetrics(nameFont);		
-		g.setColor(Color.BLACK);
+		g.setColor(Color.ORANGE);
 		g.fillRect((getWidth() - nameFontMetrix.stringWidth(name)) / 2, 0, nameFontMetrix.stringWidth(name), BORDER_WIDTH + nameFontMetrix.getAscent() / 3);
-		g.setColor(Color.WHITE);
+		g.setColor(Color.BLACK);
 		g.setFont(nameFont);
 		g.drawString(name, (getWidth() - nameFontMetrix.stringWidth(name)) / 2, BORDER_WIDTH + nameFontMetrix.getAscent() / 3);
 
