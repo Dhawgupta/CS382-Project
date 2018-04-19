@@ -10,19 +10,19 @@ public class Main extends JApplet {
 	private static final long serialVersionUID = 1L;
 	private SortPanel[] sortPanels = new SortPanel[4];
 
-	private static int size = 100;
-	private int sleepTime = 250;
+	private static int size = 30;
+	private int sleepTime = 100;
 	private String animationName = "";
 
 	public Main() {
 		setLayout(new GridLayout(1, 1, 0, 0));
 		SortPanelsHolder sortPanelHolder = new SortPanelsHolder();
 		sortPanelHolder.setLayout(new  GridLayout(2, 2, 0, 0));
-		sortPanelHolder.setBackground(Color.BLACK);
-		sortPanelHolder.setForeground(Color.BLACK);
+		sortPanelHolder.setBackground(Color.CYAN);
+		sortPanelHolder.setForeground(Color.CYAN);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int width = screenSize.width / 2; // from 3
-		int height = screenSize.height / 2; // from 3
+		int width = screenSize.width / 2; 
+		int height = screenSize.height / 2; 
 		sortPanels[0] = new SelectionSortPanel(" Selection Sort ", sleepTime, width, height);
 		sortPanels[1] = new InsertionSortPanel(" Insertion Sort  ", sleepTime, width, height);
 		sortPanels[2] = new BubbleSortPanel(" Bubble Sort ", sleepTime, width, height);
@@ -42,7 +42,7 @@ public class Main extends JApplet {
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			g.setColor(Color.WHITE);
-			Font animationNameFont = new Font(Font.MONOSPACED, Font.BOLD, 150);
+			Font animationNameFont = new Font("Serif", Font.BOLD, 150);
 			FontMetrics animationNameFontFontMetrix = getFontMetrics(animationNameFont);
 			g.setFont(animationNameFont);
 			int x = (getWidth() - animationNameFontFontMetrix.stringWidth(animationName)) / 2;

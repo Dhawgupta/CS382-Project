@@ -6,8 +6,8 @@ public class MergeSortPanel extends SortPanel {
 	private static final long serialVersionUID = 1L;
 	private int redColumn = -1;
 	private int blueColumn = -1;
-	private int greenColumnStart = -1;
-	private int greenColumnFinish = -1;
+	private int cyanColumnStart = -1;
+	private int cyanColumnFinish = -1;
 	
 	public MergeSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
@@ -17,16 +17,16 @@ public class MergeSortPanel extends SortPanel {
 	public void reset() {
 		redColumn = -1;
 		blueColumn = -1;
-		greenColumnStart = -1;
-		greenColumnFinish = -1;
+		cyanColumnStart = -1;
+		cyanColumnFinish = -1;
 	}
 
 	@Override
 	public void run() {
 		try {
 			mergeSort(0, list.length - 1);
-			greenColumnStart = 0;
-			greenColumnFinish = size - 1;
+			cyanColumnStart = 0;
+			cyanColumnFinish = size - 1;
 		} catch (InterruptedException e) {
 		}
 		repaint();
@@ -46,7 +46,7 @@ public class MergeSortPanel extends SortPanel {
 		int[] tmp = new int[list1.length + list2.length];
 		System.arraycopy(list, start1, list1, 0, list1.length);
 		System.arraycopy(list, start2, list2, 0, list2.length);
-		Thread.sleep(2 * sleepTime);
+		Thread.sleep( sleepTime);
 		repaint();
 	    int current1 = 0;
 	    redColumn = start1 + current1;
@@ -55,7 +55,7 @@ public class MergeSortPanel extends SortPanel {
 	    int current3 = 0;
 
 		while (current1 < list1.length && current2 < list2.length) {
-			Thread.sleep(2 * sleepTime);
+			Thread.sleep( sleepTime);
 			repaint();
 			if (list1[current1] < list2[current2]) {
 				tmp[current3++] = list1[current1++];
@@ -64,35 +64,35 @@ public class MergeSortPanel extends SortPanel {
 				tmp[current3++] = list2[current2++];
 				blueColumn = start2 + current2 - 1;
 			}
-			Thread.sleep(2 * sleepTime);
+			Thread.sleep( sleepTime);
 			repaint();
 		}
 
 		while (current1 < list1.length) {
 			tmp[current3++] = list1[current1++];
 			redColumn = start1 + current1;
-			Thread.sleep(2 * sleepTime);
+			Thread.sleep( sleepTime);
 			repaint();
 		}
 
 		while (current2 < list2.length) {
 			tmp[current3++] = list2[current2++];
 			blueColumn = start2 + current2 - 1;
-			Thread.sleep(2 * sleepTime);
+			Thread.sleep(sleepTime);
 			repaint();
 		}
 
 		redColumn = -1;
 		blueColumn = -1;
-		greenColumnStart = start1;
+		cyanColumnStart = start1;
 		for (int i = 0; i < tmp.length; i++) {
-			greenColumnFinish = start1 + i;
+			cyanColumnFinish = start1 + i;
 			list[start1 + i] =  tmp[i];
-			Thread.sleep(2 * sleepTime);
+			Thread.sleep( sleepTime);
 			repaint();
 		}
-		greenColumnStart = -1;
-		greenColumnFinish = -1;
+		cyanColumnStart = -1;
+		cyanColumnFinish = -1;
 	}
 
 	@Override
@@ -106,9 +106,9 @@ public class MergeSortPanel extends SortPanel {
 			g.setColor(Color.BLACK);
 			g.drawRect(2 * BORDER_WIDTH + columnWidth * i, getHeight() - list[i] * columnHeight - 2 * BORDER_WIDTH, columnWidth, list[i] * columnHeight);			
 		}
-		if((greenColumnStart != -1)&&(greenColumnFinish != -1)) {
-			for (int i = greenColumnStart; i <= greenColumnFinish; i++) {
-				g.setColor(Color.GREEN);
+		if((cyanColumnStart != -1)&&(cyanColumnFinish != -1)) {
+			for (int i = cyanColumnStart; i <= cyanColumnFinish; i++) {
+				g.setColor(Color.CYAN);
 				g.fillRect(2 * BORDER_WIDTH + columnWidth * i, getHeight() - list[i] * columnHeight - 2 * BORDER_WIDTH, columnWidth, list[i] * columnHeight);
 				g.setColor(Color.BLACK);
 				g.drawRect(2 * BORDER_WIDTH + columnWidth * i, getHeight() - list[i] * columnHeight - 2 * BORDER_WIDTH, columnWidth, list[i] * columnHeight);			

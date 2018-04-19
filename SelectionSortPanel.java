@@ -6,7 +6,7 @@ public class SelectionSortPanel extends SortPanel {
 	private static final long serialVersionUID = 1L;
 	private int redColumn = -1;
 	private int blueColumn = -1;
-	private int greenColumn = -1;
+	private int cyanColumn = -1;
 	
 	public SelectionSortPanel(String name, int sleepTime, int width, int height) {
 		super(name, sleepTime, width, height);
@@ -16,7 +16,7 @@ public class SelectionSortPanel extends SortPanel {
 	public void reset() {
 		redColumn = -1;
 		blueColumn = -1;
-		greenColumn = -1;		
+		cyanColumn = -1;		
 	}
 
 	@Override
@@ -28,7 +28,7 @@ public class SelectionSortPanel extends SortPanel {
 				for (int j = i + 1; j < list.length; j++) {
 					blueColumn = j;
 					repaint();
-					Thread.sleep(4 * sleepTime);
+					Thread.sleep( sleepTime);
 					if (list[currentMinIndex] > list[j]) {
 						currentMinIndex = j;
 						redColumn = currentMinIndex;
@@ -41,12 +41,12 @@ public class SelectionSortPanel extends SortPanel {
 					list[currentMinIndex] = list[i];
 					list[i] = tmp;
 					repaint();
-					Thread.sleep(4 * sleepTime);
+					Thread.sleep( sleepTime);
 				}
-				greenColumn++;
+				cyanColumn++;
 				repaint();
 			}
-			greenColumn++;
+			cyanColumn++;
 			redColumn = -1;
 			blueColumn = -1;
 		} catch (InterruptedException e) {
@@ -59,14 +59,14 @@ public class SelectionSortPanel extends SortPanel {
 		super.paintComponent(g);
 		int columnWidth = (getWidth() - 4 * BORDER_WIDTH) / size;
 		int columnHeight = (getHeight() - 4 * BORDER_WIDTH) / size;
-		for (int i = (greenColumn == -1 ? 0 : greenColumn); i < list.length; i++) {
+		for (int i = (cyanColumn == -1 ? 0 : cyanColumn); i < list.length; i++) {
 			g.setColor(Color.WHITE);
 			g.fillRect(2 * BORDER_WIDTH + columnWidth * i, getHeight() - list[i] * columnHeight - 2 * BORDER_WIDTH, columnWidth, list[i] * columnHeight);
 			g.setColor(Color.BLACK);
 			g.drawRect(2 * BORDER_WIDTH + columnWidth * i, getHeight() - list[i] * columnHeight - 2 * BORDER_WIDTH, columnWidth, list[i] * columnHeight);			
 		}
-		for (int i = 0; i <= greenColumn; i++) {
-			g.setColor(Color.GREEN);
+		for (int i = 0; i <= cyanColumn; i++) {
+			g.setColor(Color.CYAN);
 			g.fillRect(2 * BORDER_WIDTH + columnWidth * i, getHeight() - list[i] * columnHeight - 2 * BORDER_WIDTH, columnWidth, list[i] * columnHeight);
 			g.setColor(Color.BLACK);
 			g.drawRect(2 * BORDER_WIDTH + columnWidth * i, getHeight() - list[i] * columnHeight - 2 * BORDER_WIDTH, columnWidth, list[i] * columnHeight);			
