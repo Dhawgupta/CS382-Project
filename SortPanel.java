@@ -44,13 +44,14 @@ public abstract class SortPanel extends JPanel implements Runnable {
 		super.paintComponent(g);
 		
 		//draw border
-		g.setColor(Color.WHITE);
+//		g.setColor(Color.WHITE);
 //		g.drawRect(BORDER_WIDTH, BORDER_WIDTH, getWidth() - 2 * BORDER_WIDTH, getHeight() - 2 * BORDER_WIDTH);
 		
 		//draw title
 		Font nameFont = new Font("serif", Font.BOLD, 25);
 		FontMetrics nameFontMetrix = getFontMetrics(nameFont);		
 		g.setColor(Color.ORANGE);
+		//g.fillRect(x,y,widht, height) where we take the midway of the panel and zeo hefiht and then take the string wight and height in the wight and height arameters
 		g.fillRect((getWidth() - nameFontMetrix.stringWidth(name)) / 2, 0, nameFontMetrix.stringWidth(name), BORDER_WIDTH + nameFontMetrix.getAscent() / 3);
 		g.setColor(Color.BLACK);
 		g.setFont(nameFont);
@@ -62,5 +63,14 @@ public abstract class SortPanel extends JPanel implements Runnable {
 	public abstract void run();
 
 	public abstract void reset();
+	protected void printNumberOnTop(Graphics g,int i, int  x, int y){
+		Font nameFont = new Font("serif", Font.BOLD, 25);
+		FontMetrics nameFontMetrix = getFontMetrics(nameFont);
+		g.setColor(Color.BLACK);
+		g.setFont(nameFont);
+//				g.drawString(list[i], (getWidth() - nameFontMetrix.stringWidth(name)) / 2, BORDER_WIDTH + nameFontMetrix.getAscent() / 3);
+		Integer I = i;
+		g.drawString(I.toString(),x,y);
+	}
 
 }
